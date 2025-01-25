@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Dashboard</title>
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    /* General Styles */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .dashboard {
+      display: flex;
+    }
+
+    .sidebar {
+      width: 20%;
+      background-color: #3f51b5;
+      color: white;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .sidebar .logo {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .sidebar .logo img {
+      width: 60px;
+    }
+
+    .menu {
+      list-style: none;
+      padding: 0;
+    }
+
+    .menu li {
+      margin: 15px 0;
+      cursor: pointer;
+      padding: 10px;
+      border-radius: 5px;
+      transition: background 0.3s;
+    }
+
+    .menu li:hover {
+      background-color: #536dfe;
+    }
+
+    .menu li i {
+      margin-right: 10px;
+    }
+
+    .main-content {
+      width: 80%;
+      padding: 20px;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .search-bar {
+      display: flex;
+      align-items: center;
+    }
+
+    .search-bar input {
+      padding: 8px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      margin-right: 10px;
+    }
+
+    .profile {
+      display: flex;
+      align-items: center;
+    }
+
+    .profile img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      margin-right: 10px;
+    }
+
+    .content-section {
+      display: none; /* Hidden by default */
+    }
+
+    .content-section.active {
+      display: block; /* Show active section */
+    }
+
+    /* Section Styles */
+    .info-card,
+    .progress-card,
+    .chart-container,
+    .report-card {
+      background-color: #f9f9f9;
+      padding: 20px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    table th,
+    table td {
+      padding: 10px;
+      border: 1px solid #ddd;
+      text-align: left;
+    }
+
+    table th {
+      background-color: #3f51b5;
+      color: white;
+    }
+
+    .chart-container {
+      width: 80%;
+      margin: auto;
+      padding: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="dashboard">
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <div class="logo">
+        <img src="354637.png" alt="Flex Logo">
+        <h3>Digitalized Report Card</h3>
+      </div>
+      <ul class="menu">
+        <li onclick="showSection('home')"><i class="fas fa-home"></i> Home Page</li>
+        <li onclick="showSection('attendance')"><i class="fas fa-calendar-check"></i> Attendance Analytics</li>
+        <li onclick="showSection('report')"><i class="fas fa-edit"></i> Report Details</li>
+      </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+      <div class="header">
+        <h1>Welcome back, Nibir!</h1>
+        <div class="search-bar">
+          <input type="text" placeholder="Search">
+          <i class="fas fa-search"></i>
+        </div>
+        <div class="profile">
+          <img src="470157621_2355513364797074_3375079922506928982_n.jpg" alt="Profile Picture">
+          <span>Shams Nibir</span>
+        </div>
+      </div>
+
+      <!-- Home Section -->
+      <div id="home" class="content-section active">
+        <div class="info-card">
+          <h3>Personal Information</h3>
+          <p>Welcome to your dashboard! Below is your personal information:</p>
+          <div class="personal-info">
+            <ul>
+              <li><strong>Name:</strong> <span id="Shams Ul Arefin Nibir">Shams Ul Arefin Nibir</span></li>
+              <li><strong>Email:</strong> <span id="sanibir1977@gmail.com">sanibir1977@gmail.com</span></li>
+              <li><strong>Phone:</strong> <span id="01********1">01********1</span></li>
+              <li><strong>Role:</strong> <span id="Dept of CSE,Islamic University">Dept of CSE,Islamic University</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- Attendance Analytics Section -->
+      <div id="attendance" class="content-section">
+        <div class="chart-container">
+          <h3>Monthly Attendance</h3>
+          <p>[Chart Placeholder]</p>
+        </div>
+        <table>
+          <tr>
+            <th>Subject</th>
+            <th>Total Classes</th>
+            <th>Classes Attended</th>
+            <th>Attendance %</th>
+          </tr>
+          <tr>
+            <td>Math</td>
+            <td>30</td>
+            <td>28</td>
+            <td>93%</td>
+          </tr>
+          <tr>
+            <td>Physics</td>
+            <td>25</td>
+            <td>20</td>
+            <td>80%</td>
+          </tr>
+          <tr>
+            <td>Chemistry</td>
+            <td>25</td>
+            <td>15</td>
+            <td>60%</td>
+          </tr>
+          <tr>
+            <td>Biology</td>
+            <td>25</td>
+            <td>10</td>
+            <td>40%</td>
+          </tr>
+          <tr>
+            <td>English</td>
+            <td>25</td>
+            <td>20</td>
+            <td>80%</td>
+          </tr>
+        </table>
+      </div>
+
+      <!-- Report Details Section -->
+      <div id="report" class="content-section">
+        <div class="chart-container">
+          <canvas id="reportChart"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Function to show specific section and hide others
+    function showSection(sectionId) {
+      // Get all sections
+      const sections = document.querySelectorAll('.content-section');
+
+      // Hide all sections
+      sections.forEach((section) => {
+        section.classList.remove('active');
+      });
+
+      // Show the clicked section
+      document.getElementById(sectionId).classList.add('active');
+
+      // Render the chart when the "Report Details" section is shown
+      if (sectionId === 'report') {
+        renderChart();
+      }
+    }
+
+    // Function to render the chart
+    function renderChart() {
+      const ctx = document.getElementById('reportChart').getContext('2d');
+      new Chart(ctx, {
+        type: 'bar', // Change to 'line' for a line chart
+        data: {
+          labels: ['Math', 'Physics', 'Chemistry', 'Biology', 'English'], // Subjects
+          datasets: [{
+            label: 'Marks Obtained',
+            data: [85, 78, 92, 88, 75], // Sample marks
+            backgroundColor: ['#3f51b5', '#536dfe', '#ff9800', '#4caf50', '#f44336']
+          }]
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: {
+              position: 'top',
+            },
+          },
+        }
+      });
+    }
+  </script>
+</body>
+</html>
+
